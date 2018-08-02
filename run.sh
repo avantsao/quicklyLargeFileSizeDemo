@@ -6,4 +6,3 @@
 #if available space is zero, do reboot
 cp script/count.sh /tmp/
 
-
