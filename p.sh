@@ -44,12 +44,34 @@
 #  echo a=$a | b=$b
 
 
-# ===============================
+# # ===============================
+# ex:
+# files=`find <subdir> -name '*'`
+# while read -r fname; do
+#     echo $fname
+# done <<< "$files"
+# # ===============================
+# #!/bin/bash
+# while read -r fname; do
+#     echo $fname
+# done <<< "`find <subdir> -name '*'`"
+# # ===============================
 
-df -H | awk '{print $2, $3}' | while read var1 var2
+# ===================================================================
+# = function with dump disk available space then assign to variables
+# ===================================================================
+# ---------- Method 1 ----------------
+# df -H | awk '{print $2, $3}' | while read var1 var2
+# do
+#     echo "var1=$var1 | var2=$var2"
+# done
+
+
+# ---------- Method 2 ----------------
+while read var1 var2
 do
     echo "var1=$var1 | var2=$var2"
-done
+done <<< "`df -H | awk '{print $2, $3}'`"
 
 
 
